@@ -1,0 +1,22 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ComposeActivity">
+    <item
+        android:id="@+id/sign_out"
+        android:orderInCategory="100"
+        android:title="Sign Out"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/delete"
+        android:icon="@drawable/ic_action_discard"
+        android:orderInCategory="100"
+        android:title="Delete"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/reply"
+        android:icon="@drawable/ic_action_reply"
+        android:orderInCategory="100"
+        android:title="Delete"
+        app:showAsAction="always" />
+</menu>

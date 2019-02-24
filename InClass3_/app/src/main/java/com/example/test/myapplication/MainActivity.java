@@ -80,14 +80,14 @@ public class MainActivity extends AppCompatActivity {
             toastMessage.append("Name");
             failure = true;
         }
-        if(email == null || "".equals(email) || email.length() < 3 || !email.contains("@") || !Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+        /*if(email == null || "".equals(email) || email.length() < 3 || !email.contains("@") || !Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
             tv_email.setError("Enter a valid email");
             if(failure) {
                 toastMessage.append(", ");
             }
             toastMessage.append("email");
             failure = true;
-        }
+        }*/
 
         if(failure) {
             Toast toast = Toast.makeText(getBaseContext(), toastMessage.toString(), Toast.LENGTH_LONG);

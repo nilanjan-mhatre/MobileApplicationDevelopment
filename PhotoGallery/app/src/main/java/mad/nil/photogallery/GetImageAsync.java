@@ -1,16 +1,11 @@
-/**
- * Inclass 5
- * File name: GetImageAsync.java
- * Nilanjan Mhatre (Student Id: 801045013)
- * Shantanu Rajenimbalkar (Student Id: 800968033)
- */
 package mad.nil.photogallery;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
-import android.widget.ImageView;
+import android.os.Bundle;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
@@ -18,19 +13,13 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-import mad.nil.photogallery.Gallery;
-import mad.nil.photogallery.R;
+public class GetImageAsync extends AsyncTask<String, String, Bitmap> {
 
-public class GetImageAsync extends AsyncTask<String, Void, Bitmap> {
+    ImageFunctions imageFunctions;
 
-    ImageData imageData; //interface
-//    ImageView imageView;
-    Bitmap image = null; //to store downloaded image
-
-    public GetImageAsync(ImageData imageData){
-        this.imageData = imageData;
+    public GetImageAsync(ImageFunctions imageFunctions) {
+        this.imageFunctions = imageFunctions;
     }
-
 
     @Override
     protected Bitmap doInBackground(String... params) {
@@ -38,18 +27,19 @@ public class GetImageAsync extends AsyncTask<String, Void, Bitmap> {
         HttpURLConnection connection = null;
         InputStream inputStream = null;
         String result = null;
-        image = null;
+        Bitmap bitmap = null;
         try {
             URL url = new URL(params[0]);
             connection = (HttpURLConnection) url.openConnection();
             connection.connect();
             if(connection.getResponseCode() == HttpURLConnection.HTTP_OK) {
                 inputStream = connection.getInputStream();
-                image = BitmapFactory.decodeStream(connection.getInputStream());
+                bitmap = BitmapFactory.decodeStream(connection.getInputStream());
             }
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
+            imageFunctions.dismissDialog();
             if(connection !=null) {
                 connection.disconnect();
             }
@@ -61,16 +51,14 @@ public class GetImageAsync extends AsyncTask<String, Void, Bitmap> {
                 }
             }
         }
-        return image;
+        return bitmap;
     }
 
     @Override
     protected void onPostExecute(Bitmap bitmap) {
-        imageData.postResult(bitmap); //send image back to main activity
+        super.onPostExecute(bitmap);
+        imageFunctions.displayImage(bitmap);
+        imageFunctions.dismissDialog();
     }
 
-    // interface to pass downloaded image back to main activity (Gallery)
-    public static interface ImageData {
-        public void postResult(Bitmap bitmap);
-    }
 }

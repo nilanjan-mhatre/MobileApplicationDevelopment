@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ReadActivity"
+    android:orientation="vertical"
+    android:weightSum="100">
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/inbox_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        app:logo="@drawable/ic_launcher"
+        app:titleTextColor="@color/cardview_light_background"
+        android:background="@color/cardview_dark_background">
+    </android.support.v7.widget.Toolbar>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:weightSum="100"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="10"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:weightSum="100">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="20"
+                android:gravity="center_vertical|center_horizontal"
+                android:text="@string/from" />
+
+            <TextView
+                android:id="@+id/from_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="70"
+                android:gravity="center_vertical|center_horizontal" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="80">
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <TextView
+                    android:id="@+id/message_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="60" />
+            </ScrollView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="10">
+            <Button
+                android:id="@+id/back"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/back"/>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

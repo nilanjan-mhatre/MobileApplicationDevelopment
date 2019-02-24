@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">MessageMe!</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="new_user">New User?</string>
+    <string name="login">Login</string>
+    <string name="password">Password</string>
+    <string name="email">Email</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="cancel">Cancel</string>
+    <string name="login_failed">Login failed</string>
+    <string name="email_error">Enter a valid email</string>
+    <string name="signup_error">Sign Up failed. Check if email already exists or password satisfies requirements</string>
+    <string name="password_error">Enter a valid password</string>
+    <string name="no_internet">No Internet Connection</string>
+    <string name="compose">Compose</string>
+    <string name="send">Send</string>
+    <string name="to">To:</string>
+    <string name="compose_message">Compose Message</string>
+    <string name="from">From</string>
+    <string name="back">Back to Inbox</string>
+    <string name="read_message">Read Message</string>
+    <string name="inbox">Inbox</string>
+</resources>
