@@ -21,4 +21,6 @@ public interface NewsFunctions {
     void dismissDialog();
 
     void showDialog(String message);
+
+    public void loadImage(String url);
 }

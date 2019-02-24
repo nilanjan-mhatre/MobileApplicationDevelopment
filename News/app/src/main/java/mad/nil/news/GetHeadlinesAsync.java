@@ -69,5 +69,6 @@ public class GetHeadlinesAsync extends AsyncTask<String, String, String> {
     protected void onPostExecute(String strings) {
         super.onPostExecute(strings);
         newsFunctions.loadHeadlinesDetails(strings);
+        newsFunctions.dismissDialog();
     }
 }

@@ -54,7 +54,6 @@ public class GetImageURLsAsync extends AsyncTask<String, String, List<String>> {
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            imageFunctions.dismissDialog();
             if(connection !=null) {
                 connection.disconnect();
             }

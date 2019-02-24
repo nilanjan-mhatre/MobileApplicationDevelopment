@@ -16,6 +16,7 @@ import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.os.CountDownTimer;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
@@ -33,6 +34,7 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.squareup.picasso.Picasso;
 
 import org.w3c.dom.Text;
@@ -173,12 +175,20 @@ public class NewsActivity extends AppCompatActivity implements NewsFunctions {
                             if(!currentKeyword.equals(keyword)) {
                                 if(isConnected()) {
                                     showDialog(getString(R.string.loading_news_message));
-                                    new GetHeadlinesAsync(NewsActivity.this).execute(NEWS_URL,NEWS_COUNTRY, keyword, API_KEY);
+                                    new GetHeadlinesAsync(NewsActivity.this).execute(NEWS_URL, NEWS_COUNTRY, keyword, API_KEY);
                                 } else {
                                     Toast.makeText(NewsActivity.this, R.string.no_internet, Toast.LENGTH_SHORT).show();
                                     currentIndex = -1;
-                                    loadCurrentNews();
                                     dismissDialog();
+                                    TextView title = findViewById(R.id.news_title);
+                                    TextView date = findViewById(R.id.news_date);
+                                    final TextView description = findViewById(R.id.news_description);
+                                    TextView status = findViewById(R.id.status_text);
+                                    title.setText("");
+                                    date.setText("");
+                                    description.setText("");
+                                    status.setText("");
+                                    imageLinearLayout.removeAllViewsInLayout();
                                 }
                             } else {
                                 if(headlines.size() > 0) {
@@ -281,16 +291,21 @@ public class NewsActivity extends AppCompatActivity implements NewsFunctions {
 
     public void loadImage(String url) {
         if(url == null) {
-            imageLinearLayout.removeAllViews();
+            imageLinearLayout.removeAllViewsInLayout();
         } else if(url != null && !url.equals("")) {
-            imageLinearLayout.removeAllViews();
-            Picasso.with(this).load(url).into(imageView);
-            imageLinearLayout.addView(imageView);
+            imageLinearLayout.removeAllViewsInLayout();
+            if(isConnected()) {
+                Glide.with(this).load(url).placeholder(R.drawable.loading).into(imageView);
+//                Picasso.with(this).load(url).placeholder(R.drawable.loading).into(imageView);
+                imageLinearLayout.addView(imageView);
+            } else {
+                Toast.makeText(this, "No Internet Connection", Toast.LENGTH_SHORT).show();
+            }
         }
     }
 
     public void loadCurrentNews() {
-        showDialog(getString(R.string.loading_news_message));
+        showDialog(getResources().getString(R.string.loading_news_message));
         TextView title = findViewById(R.id.news_title);
         TextView date = findViewById(R.id.news_date);
         final TextView description = findViewById(R.id.news_description);
