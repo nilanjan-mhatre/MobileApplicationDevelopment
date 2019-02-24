@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Paths Activity</string>
+    <string name="ending_location">Ending Location</string>
+    <string name="start_location">Starting Location</string>
+</resources>

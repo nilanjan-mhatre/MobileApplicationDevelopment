@@ -1,0 +1,36 @@
+<resources>
+    <string name="app_name">News Activity</string>
+    <string name="category_title">News Activity</string>
+    <string name="detail_title">Detail Activity</string>
+    <string name="no_news">No News Found</string>
+    <string name="no_internet">No Internet Connection</string>
+
+    <string name="default_loading_message">Loading</string>
+    <string name="loading_news_message">Loading News..</string>
+
+    <string-array name="news_categories">
+        <item>Business</item>
+        <item>Entertainment</item>
+        <item>General</item>
+        <item>Health</item>
+        <item>Science</item>
+        <item>Sports</item>
+        <item>Technology</item>
+        <item>none</item>
+    </string-array>
+
+    <!--<string-array name="news_categories">
+        <item>Top Stories</item>
+        <item>World</item>
+        <item>U.S.</item>
+        <item>Business</item>
+        <item>Politics</item>
+        <item>Technology</item>
+        <item>Health</item>
+        <item>Entertainment</item>
+        <item>Travel</item>
+        <item>Living</item>
+        <item>Most Recent</item>
+        <item>none</item>
+    </string-array>-->
+</resources>
